@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Solo Quest</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div>
+          <h1>Solo Quest</h1>
+          <p class="tagline">A one-person dungeon crawl. Descend, survive, claim the relic.</p>
+        </div>
+        <div class="stats" id="stats"></div>
+      </header>
+
+      <main>
+        <div class="board-wrap">
+          <div id="board" class="board" role="application" aria-label="Dungeon map"></div>
+        </div>
+        <aside class="panel">
+          <h2>Log</h2>
+          <ul id="log" class="log"></ul>
+          <div class="help">
+            <p><kbd>WASD</kbd> / arrows move · <kbd>Space</kbd> wait</p>
+            <p>Bump enemies to fight. Find stairs. Reach floor 8.</p>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <div id="overlay" class="overlay">
+      <div class="modal">
+        <h2 id="modal-title">Solo Quest</h2>
+        <p id="modal-body">
+          You are the last seeker. Eight floors down, a relic waits in the dark.
+          Enemies hunt by scent. Potions and blades are scattered in the stone.
+        </p>
+        <button id="modal-btn" type="button">Enter the dungeon</button>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>

@@ -1,0 +1,264 @@
+:root {
+  --bg: #0c1016;
+  --panel: #141b24;
+  --ink: #e8dfc8;
+  --muted: #9aa4b0;
+  --gold: #e0b15a;
+  --ember: #d46a3a;
+  --hp: #c94c4c;
+  --wall: #1b2430;
+  --floor: #243044;
+  --seen: #1a222d;
+  --player: #f3d27a;
+  --enemy: #d45d5d;
+  --item: #6ecb8a;
+  --stairs: #7eb6e0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(1200px 500px at 50% -10%, #1c2736 0%, transparent 60%),
+    var(--bg);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-end;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+
+.tagline {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background: var(--panel);
+  border: 1px solid #2a3646;
+  border-radius: 8px;
+  padding: 8px 12px;
+  min-width: 84px;
+}
+
+.stat span {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stat strong {
+  font-size: 1.15rem;
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 16px;
+}
+
+.board-wrap {
+  background: #0a0e14;
+  border: 1px solid #2a3646;
+  border-radius: 12px;
+  padding: 12px;
+  overflow: auto;
+}
+
+.board {
+  display: grid;
+  gap: 2px;
+  width: max-content;
+  margin: 0 auto;
+}
+
+.cell {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  border-radius: 4px;
+  user-select: none;
+  background: #07090c;
+  color: transparent;
+}
+
+.cell.wall.visible {
+  background: #121821;
+  color: #3a4a5c;
+}
+
+.cell.floor.visible {
+  background: var(--floor);
+  color: #6a7a8c;
+}
+
+.cell.floor.seen:not(.visible),
+.cell.wall.seen:not(.visible) {
+  background: var(--seen);
+  color: #2a3542;
+}
+
+.cell.player {
+  background: #3d3420;
+  color: var(--player);
+  box-shadow: inset 0 0 0 2px var(--gold);
+}
+
+.cell.enemy.visible {
+  background: #3a2224;
+  color: var(--enemy);
+}
+
+.cell.item.visible {
+  background: #1e3328;
+  color: var(--item);
+}
+
+.cell.stairs.visible {
+  background: #1d2d3c;
+  color: var(--stairs);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid #2a3646;
+  border-radius: 12px;
+  padding: 14px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+}
+
+.panel h2 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: var(--gold);
+}
+
+.log {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  overflow: auto;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: #d7d0bc;
+}
+
+.log li {
+  margin-bottom: 8px;
+  border-bottom: 1px solid #243040;
+  padding-bottom: 8px;
+}
+
+.help {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.help p {
+  margin: 0 0 6px;
+}
+
+kbd {
+  font-family: ui-monospace, Menlo, monospace;
+  background: #0c1118;
+  border: 1px solid #334155;
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--ink);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 8, 12, 0.82);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.modal {
+  max-width: 440px;
+  background: #151c26;
+  border: 1px solid var(--gold);
+  border-radius: 14px;
+  padding: 28px 26px;
+  text-align: center;
+}
+
+.modal h2 {
+  margin: 0 0 12px;
+  color: var(--gold);
+}
+
+.modal p {
+  margin: 0 0 20px;
+  color: #d5ccb6;
+  line-height: 1.5;
+}
+
+button {
+  background: var(--gold);
+  color: #1a1408;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font: 650 1rem Georgia, serif;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.08);
+}
+
+@media (max-width: 860px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    min-height: 180px;
+  }
+}
